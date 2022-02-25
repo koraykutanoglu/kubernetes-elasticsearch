@@ -29,3 +29,9 @@ Run all yaml files in one go:
 ```
 kubectl apply -f .
 ```
+
+Generate a elasticsearch 9200 port sign user and password:
+
+```
+kubectl exec -it $(kubectl get pods -n logging | grep elasticsearch-client | sed -n 1p | awk '{print $1}') -n logging -- bin/elasticsearch-setup-passwords auto -b
+```
